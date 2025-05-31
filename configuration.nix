@@ -44,19 +44,36 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
   };
 
+
+   services.greetd = {
+     enable = true;
+     settings = {
+       default_session = {
+         command = "${pkgs.hyprland}/bin/Hyprland";
+         user = "sean"; # Your username
+       };
+     };
+     # Example with regreet (graphical)
+     package = pkgs.greetd.regreet;
+     # Or tuigreet (console)
+     # package = pkgs.greetd.tuigreet;
+   };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  
+  
+   
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -146,7 +163,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    helix
     wl-clipboard
   ];
   environment.variables = {
