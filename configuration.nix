@@ -103,6 +103,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
   };
+  home-manager.backupFileExtension = "backup";
   home-manager.users.sean = { pkgs, ...}: {
     home.packages = [
       pkgs.atool
