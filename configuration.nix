@@ -111,6 +111,13 @@
       pkgs.helix
       pkgs.jujutsu
 
+      # media
+      pkgs.qbittorrent
+      pkgs.prowlarr
+      pkgs.sonarr
+      pkgs.radarr
+      pkgs.jellyfin
+
       # --- ESSENTIAL HYPRLAND ECOSYSTEM TOOLS ---
       pkgs.alacritty # Terminal emulator (popular choice, or pkgs.alacritty, pkgs.foot)
       pkgs.wofi # Application launcher (or pkgs.rofi-wayland)
