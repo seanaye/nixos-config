@@ -110,22 +110,15 @@
       pkgs.httpie
       pkgs.helix
       pkgs.jujutsu
-
-      # media
-      pkgs.qbittorrent
-      pkgs.prowlarr
-      pkgs.sonarr
-      pkgs.radarr
-      pkgs.jellyfin
-
+      pkgs.htop
       # --- ESSENTIAL HYPRLAND ECOSYSTEM TOOLS ---
       pkgs.alacritty # Terminal emulator (popular choice, or pkgs.alacritty, pkgs.foot)
       pkgs.wofi # Application launcher (or pkgs.rofi-wayland)
       pkgs.waybar # Status bar (highly recommended)
       pkgs.mako # Notification daemon
       pkgs.swaybg # For setting wallpapers (or pkgs.hyprpaper, pkgs.swww)
-      pkgs.swaylock-effects # Screen locker (or pkgs.hyprlock)
-      # pkgs.swayidle # Idle management daemon (configure later)
+      pkgs.hyprlock # Screen locker
+      pkgs.swayidle # Idle management daemon (configure later)
       pkgs.cliphist # Clipboard history manager
       pkgs.slurp # For selecting a region for screenshots
       pkgs.grim # For taking screenshots
