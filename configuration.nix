@@ -117,8 +117,6 @@
       pkgs.waybar # Status bar (highly recommended)
       pkgs.mako # Notification daemon
       pkgs.swaybg # For setting wallpapers (or pkgs.hyprpaper, pkgs.swww)
-      pkgs.hyprlock # Screen locker
-      pkgs.swayidle # Idle management daemon (configure later)
       pkgs.cliphist # Clipboard history manager
       pkgs.slurp # For selecting a region for screenshots
       pkgs.grim # For taking screenshots
