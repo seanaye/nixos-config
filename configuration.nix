@@ -217,6 +217,23 @@
   # };
 
   # List services that you want to enable:
+  nixarr = {
+    enable = true;
+
+    jellyfin = {
+      enable = true;
+    };
+
+    transmission = {
+      enable = true;
+    };
+    sabnzbd.enable = true;
+
+    prowlarr.enable = true;
+    radarr.enable = true;
+    sonarr.enable = true;
+    jellyseerr.enable = true;
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
