@@ -223,6 +223,10 @@
   # List services that you want to enable:
   nixarr = {
     enable = true;
+    vpn = {
+      enable = true;
+      wgConf = /data/wireguard.conf;
+    };
 
     jellyfin = {
       enable = true;
@@ -230,8 +234,12 @@
 
     transmission = {
       enable = true;
+      vpn.enable = true;
     };
-    sabnzbd.enable = true;
+    sabnzbd = {
+      enable = true;
+      vpn.enable = true;
+    };
 
     prowlarr.enable = true;
     radarr.enable = true;
