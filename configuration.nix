@@ -121,6 +121,9 @@
       pkgs.slurp # For selecting a region for screenshots
       pkgs.grim # For taking screenshots
       pkgs.pavucontrol # GUI for PulseAudio/PipeWire volume control
+      pkgs.fd
+      pkgs.ripgrep
+      pkgs.yazi
 
       # --- FONTS ARE IMPORTANT ---
       pkgs.noto-fonts
