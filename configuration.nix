@@ -111,6 +111,7 @@
       pkgs.helix
       pkgs.jujutsu
       pkgs.htop
+      pkgs.zellij # terminal multiplexer
       # --- ESSENTIAL HYPRLAND ECOSYSTEM TOOLS ---
       pkgs.alacritty # Terminal emulator (popular choice, or pkgs.alacritty, pkgs.foot)
       pkgs.wofi # Application launcher (or pkgs.rofi-wayland)
