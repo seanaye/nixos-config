@@ -4,7 +4,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # home-manager is now imported via the flake's modules list
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -104,7 +103,16 @@
     shell = pkgs.fish;
   };
   home-manager.backupFileExtension = "backup";
-  home-manager.users.sean = { pkgs, ...}: {
+  home-manager.users.sean = { pkgs, inputs,  ...}: {
+    imports = [
+      inputs.catppuccin.homeManagerModules.catppuccin
+    ];
+
+    programs.waybar.catppuccin = {
+      enable = true;
+      flavor = "mocha";
+    };
+
     home.packages = [
       pkgs.atool
       pkgs.httpie

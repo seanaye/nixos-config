@@ -11,11 +11,13 @@
       inputs.nixpkgs.follows = "nixpkgs"; # Ensures Home Manager uses the same nixpkgs
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     # media server things
     nixarr.url = "github:rasmus-kirk/nixarr";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixarr, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, catppuccin, nixarr, ... }@inputs: {
     nixosConfigurations = {
       # Replace "nixos" with your actual desired hostname if it's different
       # This "nixos" must match the `networking.hostName` in your configuration.nix
@@ -30,7 +32,9 @@
           nixarr.nixosModules.default
 
           # Home Manager module
-          home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager {
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          }
         ];
       };
     };
