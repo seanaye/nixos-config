@@ -230,6 +230,7 @@
 
     jellyfin = {
       enable = true;
+      openFirewall = true;
     };
 
     transmission = {
@@ -239,12 +240,16 @@
     sabnzbd = {
       enable = true;
       vpn.enable = true;
+      openFirewall = true;
     };
 
     prowlarr.enable = true;
     radarr.enable = true;
     sonarr.enable = true;
-    jellyseerr.enable = true;
+    jellyseerr = {
+      enable = true;
+      openFirewall = true;
+    };
 
     recyclarr = {
       enable = true;
@@ -305,8 +310,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 8096 5055 ];
+  networking.firewall.allowedUDPPorts = [ 8096 5055 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
