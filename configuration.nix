@@ -44,20 +44,8 @@
   };
 
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-
    services.greetd = {
      enable = true;
-     settings = {
-       default_session = {
-         command = "${pkgs.hyprland}/bin/Hyprland";
-         user = "sean"; # Your username
-       };
-     };
      # Example with regreet (graphical)
      package = pkgs.greetd.regreet;
      # Or tuigreet (console)
@@ -102,92 +90,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
   };
-  home-manager.backupFileExtension = "backup";
-  home-manager.users.sean = { pkgs, inputs,  ...}: {
-    imports = [
-      inputs.catppuccin.homeManagerModules.catppuccin
-    ];
-
-    programs.waybar.catppuccin = {
-      enable = true;
-      flavor = "mocha";
-    };
-
-    home.packages = [
-      pkgs.atool
-      pkgs.httpie
-      pkgs.helix
-      pkgs.jujutsu
-      pkgs.htop
-      pkgs.zellij # terminal multiplexer
-      # --- ESSENTIAL HYPRLAND ECOSYSTEM TOOLS ---
-      pkgs.alacritty # Terminal emulator (popular choice, or pkgs.alacritty, pkgs.foot)
-      pkgs.wofi # Application launcher (or pkgs.rofi-wayland)
-      pkgs.waybar # Status bar (highly recommended)
-      pkgs.mako # Notification daemon
-      pkgs.swaybg # For setting wallpapers (or pkgs.hyprpaper, pkgs.swww)
-      pkgs.cliphist # Clipboard history manager
-      pkgs.slurp # For selecting a region for screenshots
-      pkgs.grim # For taking screenshots
-      pkgs.pavucontrol # GUI for PulseAudio/PipeWire volume control
-      pkgs.fd
-      pkgs.ripgrep
-      pkgs.yazi
-
-      # --- FONTS ARE IMPORTANT ---
-      pkgs.noto-fonts
-      pkgs.noto-fonts-cjk-sans
-      pkgs.noto-fonts-emoji
-      pkgs.font-awesome # For icons in waybar, etc.
-      pkgs.nerd-fonts.jetbrains-mono
-
-      # --- POLKIT AGENT (for 1Password GUI, etc.) ---
-      pkgs.lxqt.lxqt-policykit # Lightweight polkit agent
-    ];
-    programs.jujutsu = {
-      enable = true;
-      settings = {
-        user = {
-          email = "hello@seanaye.ca";
-          name = "Sean Aye";
-        };
-      };
-    };
-    home.sessionVariables = {
-      EDITOR = "hx";
-      VISUAL = "hx";
-      SUDO_EDITOR = "hx";
-      # --- WAYLAND SPECIFIC ENV VARS ---
-      NIXOS_OZONE_WL = "1"; # May help some electron apps use Wayland
-      QT_QPA_PLATFORM = "wayland;xcb"; # Prefer Wayland for Qt, fallback to xcb (XWayland)
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # If you want Hyprland to draw all decorations
-      SDL_VIDEODRIVER = "wayland";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      _JAVA_AWT_WM_NONREPARENTING = "1";
-    };
-    programs.home-manager.enable = true;
-    programs.helix.enable = true;
-    programs.fish = {
-      enable = true;
-      interactiveShellInit = ''
-        set fish_greeting
-      '';
-    };
-    programs.starship = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    
-    # --- HYPRLAND CONFIGURATION FILES ---
-    # This tells home-manager to place your hyprland.conf in ~/.config/hypr/
-    # You will need to create the actual file (see step 2 below)
-    xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf; # Points to a file named hyprland.conf in the same directory as your configuration.nix
-
-    home.stateVersion = "25.05";
-  };
-
 
   # Install firefox.
   programs.firefox.enable = true;

@@ -13,11 +13,16 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # media server things
     nixarr.url = "github:rasmus-kirk/nixarr";
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, nixarr, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, catppuccin, niri-flake, nixarr, ... }@inputs: {
     nixosConfigurations = {
       # Replace "nixos" with your actual desired hostname if it's different
       # This "nixos" must match the `networking.hostName` in your configuration.nix
@@ -34,6 +39,7 @@
           # Home Manager module
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.sean = import ./home.nix;
           }
         ];
       };
