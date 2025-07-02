@@ -4,12 +4,20 @@
 {
   # Import the home-manager modules you want to use
   imports = [
-    inputs.niri-flake.homeModules.niri
     inputs.catppuccin.homeModules.catppuccin
   ];
 
   # Niri window manager settings, now controlled by the imported module
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    settings = {
+      outputs = {
+        "DP-1" = {
+          scale = 2.0;
+        };
+      };
+    };
+  };
 
   # Catppuccin theme for Waybar
   catppuccin.waybar = {

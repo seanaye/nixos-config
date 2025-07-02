@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.niri-flake.nixosModules.niri
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -14,6 +15,9 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  services.xserver.videoDrivers = [ "intel" ];
+  boot.initrd.kernelModules = [ "i915" ]; 
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,23 +47,30 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  programs.niri.enable = true;
 
-   services.greetd = {
-     enable = true;
-     # Example with regreet (graphical)
-     package = pkgs.greetd.regreet;
-     # Or tuigreet (console)
-     # package = pkgs.greetd.tuigreet;
-   };
+  services.greetd = {
+    enable = true;
+    # Example with regreet (graphical)
+    package = pkgs.greetd.regreet;
+    # Or tuigreet (console)
+    # package = pkgs.greetd.tuigreet;
+  };
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    
+    # Specify the backends you want to use.
+    # The order matters, the first one is the primary.
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+    # Set the default portal for common interfaces.
+    # "wlr" is for wlroots-based compositors like niri.
+    # "gtk" is a fallback for file pickers and other things.
+    config.common.default = [ "wlr" "gtk" ];
   };
-
-  
-  
    
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -87,7 +98,7 @@
   users.users.sean = {
     isNormalUser = true;
     description = "Sean Aye";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     shell = pkgs.fish;
   };
 
@@ -121,14 +132,6 @@
     SUDO_EDITOR = "hx";
   };
 
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
   nixarr = {
