@@ -5,12 +5,22 @@
   # Import the home-manager modules you want to use
   imports = [
     inputs.catppuccin.homeModules.catppuccin
+    inputs.niri.homeModules.niri
   ];
 
   # Niri window manager settings, now controlled by the imported module
   programs.niri = {
     enable = true;
     settings = {
+      binds = {
+        "Mod+D".action.spawn = "wofi";
+      };
+      spawn-at-startup = [
+        { command = ["mako"]; }
+        { command = ["waybar"]; }
+        { command = ["/usr/bin/lxqt-policykit-agent"]; }
+        { command = ["wl-paste --watch cliphist store"]; }
+      ];
       outputs = {
         "DP-1" = {
           scale = 2.0;
@@ -18,6 +28,8 @@
       };
     };
   };
+
+  programs.waybar.enable = true;
 
   # Catppuccin theme for Waybar
   catppuccin.waybar = {

@@ -13,16 +13,13 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    niri-flake = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    niri.url = "github:sodiboo/niri-flake";
 
     # media server things
     nixarr.url = "github:rasmus-kirk/nixarr";
   };
 
-  outputs = { self, nixpkgs, home-manager, catppuccin, niri-flake, nixarr, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, catppuccin, niri, nixarr, ... }@inputs: {
     nixosConfigurations = {
       # Replace "nixos" with your actual desired hostname if it's different
       # This "nixos" must match the `networking.hostName` in your configuration.nix
@@ -32,6 +29,10 @@
         modules = [
           # Your main configuration file
           ./configuration.nix
+
+          ({
+            nixpkgs.overlays = [ niri.overlays.niri ];
+          })
 
           # nixarr module
           nixarr.nixosModules.default

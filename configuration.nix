@@ -4,7 +4,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      inputs.niri-flake.nixosModules.niri
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -15,9 +14,6 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  services.xserver.videoDrivers = [ "intel" ];
-  boot.initrd.kernelModules = [ "i915" ]; 
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -47,14 +43,19 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  programs.niri.enable = true;
+  programs.niri = {
+   enable = true;
+   package = pkgs.niri;
+  };
 
   services.greetd = {
     enable = true;
-    # Example with regreet (graphical)
-    package = pkgs.greetd.regreet;
-    # Or tuigreet (console)
-    # package = pkgs.greetd.tuigreet;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri";
+        user = "greeter";
+      };
+    };
   };
 
   xdg.portal = {
@@ -91,6 +92,8 @@
     #media-session.enable = true;
   };
 
+  
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -115,7 +118,6 @@
   programs.steam = {
     enable = true;
   };
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
