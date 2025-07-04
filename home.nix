@@ -13,18 +13,23 @@
     enable = true;
     settings = {
       binds = {
-        "Mod+D".action.spawn = "wofi";
+        "Mod+d".action.spawn = ["wofi" "--show" "drun" "--prompt" "Search..."];
+        "Mod+a".action.spawn = "alacritty";
+      };
+      outputs = {
+        "DP-1" = {
+          scale = 2.0;
+        };
       };
       spawn-at-startup = [
+        { command = ["xwayland-satellite"]; }
         { command = ["mako"]; }
         { command = ["waybar"]; }
         { command = ["/usr/bin/lxqt-policykit-agent"]; }
         { command = ["wl-paste --watch cliphist store"]; }
       ];
-      outputs = {
-        "DP-1" = {
-          scale = 2.0;
-        };
+      environment = {
+        DISPLAY = ":0";
       };
     };
   };
@@ -46,7 +51,7 @@
     htop
     zellij # terminal multiplexer
        # --- ESSENTIAL HYPRLAND ECOSYSTEM TOOLS ---
-    alacritty # Terminal emulator (popular choice, or pkgs.alacritty, pkgs.foot)
+    alacritty
     wofi # Application launcher (or pkgs.rofi-wayland)
     waybar # Status bar (highly recommended)
     mako # Notification daemon
@@ -58,6 +63,8 @@
     fd
     ripgrep
     yazi
+
+    xwayland-satellite
 
        # --- FONTS ARE IMPORTANT ---
     noto-fonts

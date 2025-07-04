@@ -105,10 +105,7 @@
     shell = pkgs.fish;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
   programs.fish.enable = true;
-
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
