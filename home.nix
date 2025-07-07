@@ -81,6 +81,7 @@
     atool
     httpie
     helix
+    git
     jujutsu
     htop
     zellij # terminal multiplexer
@@ -115,6 +116,14 @@
   ];
 
   # Program configurations
+  programs.git = {
+    enable = true;
+    userName = "seanaye";
+    userEmail = "hello@seanaye.ca";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
   programs.jujutsu = {
     enable = true;
     settings.user = {
@@ -163,7 +172,6 @@
     SDL_VIDEODRIVER = "wayland";
     XDG_CURRENT_DESKTOP = "Niri";
     XDG_SESSION_TYPE = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
   # Set the state version for Home Manager
