@@ -76,6 +76,14 @@
     flavor = "mocha";
   };
 
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host *
+        IdentityAgent ~/.1password/agent.sock
+    '';
+  };
+
   # All your user-specific packages
   home.packages = with pkgs; [
     atool
@@ -172,6 +180,7 @@
     SDL_VIDEODRIVER = "wayland";
     XDG_CURRENT_DESKTOP = "Niri";
     XDG_SESSION_TYPE = "wayland";
+    SSH_AUTH_SOCK = "~/.1password/agent.sock";
   };
 
   # Set the state version for Home Manager
