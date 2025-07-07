@@ -1,12 +1,20 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -44,8 +52,8 @@
   };
 
   programs.niri = {
-   enable = true;
-   package = pkgs.niri;
+    enable = true;
+    package = pkgs.niri;
   };
 
   services.greetd = {
@@ -60,7 +68,7 @@
 
   xdg.portal = {
     enable = true;
-    
+
     # Specify the backends you want to use.
     # The order matters, the first one is the primary.
     extraPortals = with pkgs; [
@@ -70,14 +78,18 @@
     # Set the default portal for common interfaces.
     # "wlr" is for wlroots-based compositors like niri.
     # "gtk" is a fallback for file pickers and other things.
-    config.common.default = [ "wlr" "gtk" ];
+    config.common.default = [
+      "wlr"
+      "gtk"
+    ];
   };
-   
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
+  security.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -92,16 +104,19 @@
     #media-session.enable = true;
   };
 
-  
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.udisks2.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sean = {
     isNormalUser = true;
     description = "Sean Aye";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "disk"
+      "storage"
+    ];
     shell = pkgs.fish;
   };
 
@@ -109,7 +124,7 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = ["sean"];
+    polkitPolicyOwners = [ "sean" ];
   };
 
   programs.steam = {
@@ -130,7 +145,6 @@
     VISUAL = "hx";
     SUDO_EDITOR = "hx";
   };
-
 
   # List services that you want to enable:
   nixarr = {
@@ -222,8 +236,14 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8096 5055 ];
-  networking.firewall.allowedUDPPorts = [ 8096 5055 ];
+  networking.firewall.allowedTCPPorts = [
+    8096
+    5055
+  ];
+  networking.firewall.allowedUDPPorts = [
+    8096
+    5055
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

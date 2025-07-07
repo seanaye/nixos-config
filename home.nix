@@ -6,6 +6,7 @@
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     inputs.niri.homeModules.niri
+    inputs.zen-browser.homeModules.beta
   ];
 
   # Niri window manager settings, now controlled by the imported module
@@ -86,8 +87,6 @@
 
   # All your user-specific packages
   home.packages = with pkgs; [
-    atool
-    httpie
     helix
     git
     jujutsu
@@ -98,7 +97,7 @@
     wofi # Application launcher (or pkgs.rofi-wayland)
     waybar # Status bar (highly recommended)
     mako # Notification daemon
-    swaybg # For setting wallpapers (or pkgs.hyprpaper, pkgs.swww)
+    swww # For setting wallpapers
     cliphist # Clipboard history manager
     slurp # For selecting a region for screenshots
     grim # For taking screenshots
@@ -106,12 +105,13 @@
     fd
     ripgrep
     yazi
-    firefox
     gh
     signal-desktop
-    xwayland-satellite
-    nixfmt-rfc-style
-    nil
+    xwayland-satellite # for running x11 apps
+    nixfmt-rfc-style # nix formatter
+    nil # nix language server
+    atac # postman-like TUI
+    rsync # file sync utility
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -122,6 +122,15 @@
     # --- POLKIT AGENT (for 1Password GUI, etc.) ---
     lxqt.lxqt-policykit # Lightweight polkit agent
   ];
+
+  services.udiskie = {
+    enable = true;
+    tray = "auto";
+    automount = true;
+  };
+
+  programs.zen-browser.enable = true;
+  # programs.swww.enable = true;
 
   # Program configurations
   programs.git = {
@@ -156,6 +165,45 @@
 
   programs.helix = {
     enable = true;
+    settings = {
+      theme = "catppuccin_frappe";
+      editor = {
+        bufferline = "multiple";
+        file-picker = {
+          hidden = true;
+          git-ignore = false;
+        };
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+        line-number = "relative";
+        cursorline = true;
+        auto-format = true;
+        end-of-line-diagnostics = "hint";
+        soft-wrap = {
+          enable = true;
+        };
+        lsp = {
+          display-inlay-hints = true;
+          display-messages = true;
+          display-progress-messages = true;
+        };
+        inline-diagnostics = {
+          cursor-line = "hint";
+        };
+      };
+      keys = {
+        normal = {
+          esc = [
+            "keep_primary_selection"
+            "collapse_selection"
+          ];
+        };
+
+      };
+    };
     languages = {
       language = [
         {
@@ -163,6 +211,17 @@
           auto-format = true;
           formatter = {
             command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+          };
+        }
+        {
+          name = "rust";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.rustfmt}/bin/rustfmt --edition 2024";
+          };
+          indent = {
+            tab-width = 4;
+            unit = "t";
           };
         }
       ];
