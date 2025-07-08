@@ -48,6 +48,12 @@
             show-pointer = true;
           };
         };
+        "Mod+1".action = {
+          set-column-width = "100%";
+        };
+        "Mod+2".action = {
+          set-column-width = "50%";
+        };
       };
       outputs = {
         "DP-1" = {
@@ -56,6 +62,7 @@
       };
       spawn-at-startup = [
         { command = [ "xwayland-satellite" ]; }
+        { command = [ "swww-daemon" ]; }
         { command = [ "mako" ]; }
         { command = [ "waybar" ]; }
         { command = [ "/usr/bin/lxqt-policykit-agent" ]; }
@@ -112,6 +119,9 @@
     nil # nix language server
     atac # postman-like TUI
     rsync # file sync utility
+    udiskie # for mounting external drives
+    darktable # photo editing
+    zoxide
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -131,6 +141,10 @@
 
   programs.zen-browser.enable = true;
   # programs.swww.enable = true;
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 
   # Program configurations
   programs.git = {
