@@ -117,6 +117,7 @@
       "video"
       "disk"
       "storage"
+      "input"
     ];
     shell = pkgs.fish;
   };

@@ -39,6 +39,7 @@
           modules = [
             # Your main configuration file
             ./configuration.nix
+            catppuccin.nixosModules.catppuccin
 
             ({
               nixpkgs.overlays = [ niri.overlays.niri ];
