@@ -13,6 +13,12 @@
   programs.niri = {
     enable = true;
     settings = {
+      layout = {
+        struts = {
+          top = 0;
+          bottom = 0;
+        };
+      };
       gestures = {
         hot-corners = {
         };
@@ -67,6 +73,7 @@
       spawn-at-startup = [
         { command = [ "xwayland-satellite" ]; }
         { command = [ "swww-daemon" ]; }
+        { command = [ "udiskie -anv" ]; }
         { command = [ "mako" ]; }
         { command = [ "waybar" ]; }
         { command = [ "/usr/bin/lxqt-policykit-agent" ]; }
@@ -78,6 +85,8 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   xdg.configFile."waybar/config.jsonc".source = ./waybar/config.jsonc;
   programs.waybar = {
     enable = true;
@@ -86,19 +95,19 @@
 
       * {
         font-family: FantasqueSansMono Nerd Font;
-        font-size: 17px;
+        font-size: 14px;
         min-height: 0;
       }
 
       #waybar {
         background: transparent;
         color: @text;
-        margin: 5px 5px;
+        margin: 4px 4px;
       }
 
       #workspaces {
         border-radius: 1rem;
-        margin: 5px;
+        margin: 4px;
         background-color: @surface0;
         margin-left: 1rem;
       }
@@ -125,11 +134,16 @@
       #clock,
       #battery,
       #pulseaudio,
+      #network,
+      #power-profiles-daemon,
+      #cpu,
+      #memory,
+      #temperature,
       #custom-lock,
       #custom-power {
         background-color: @surface0;
         padding: 0.5rem 1rem;
-        margin: 5px 0;
+        margin: 4px 0;
       }
 
       #clock {
@@ -226,6 +240,10 @@
     darktable # photo editing
     zoxide
     chromium
+    claude-code
+    nautilus # file browser
+    xdg-desktop-portal-gnome # gnome gui stuff
+    sqlitebrowser
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -302,8 +320,8 @@
       editor = {
         bufferline = "multiple";
         file-picker = {
-          hidden = true;
-          git-ignore = false;
+          hidden = false;
+          git-ignore = true;
         };
         cursor-shape = {
           insert = "bar";
