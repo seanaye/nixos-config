@@ -122,6 +122,7 @@
     udiskie # for mounting external drives
     darktable # photo editing
     zoxide
+    chromium
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -175,6 +176,16 @@
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window = {
+        decorations = "none";
+      };
+    };
+
   };
 
   programs.helix = {
