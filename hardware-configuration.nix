@@ -51,6 +51,11 @@
     options = [ "noatime" ];
   };
 
+  systemd.tmpfiles.rules = [
+    "d /mnt/storage1 0755 sean users -"
+    "d /mnt/storage2 0755 sean users -"
+  ];
+
   swapDevices = [ ];
 
   hardware.system76.kernel-modules.enable = true;
