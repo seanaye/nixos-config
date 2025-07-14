@@ -137,6 +137,7 @@
     nautilus # file browser
     xdg-desktop-portal-gnome # gnome gui stuff
     sqlitebrowser
+    gnome-characters # symbol picker
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -159,6 +160,15 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+    ];
   };
 
   # Program configurations
