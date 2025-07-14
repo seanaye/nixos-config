@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -38,6 +37,18 @@
       "fmask=0077"
       "dmask=0077"
     ];
+  };
+  fileSystems."/mnt/storage1" = {
+    device = "/dev/disk/by-uuid/3bb5c3d3-f3ce-4c54-a86c-589b477eda20";
+    fsType = "ext4";
+    # reduce write ops
+    options = [ "noatime" ];
+  };
+  fileSystems."/mnt/storage2" = {
+    device = "/dev/disk/by-uuid/40b9cab0-9f25-4b36-9f22-6ebea1fe6e7a";
+    fsType = "ext4";
+    # reduce write ops
+    options = [ "noatime" ];
   };
 
   swapDevices = [ ];
