@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -60,35 +58,40 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
         user = "greeter";
       };
     };
   };
 
-  xdg.portal = {
-    enable = true;
+  # xdg.portal = {
+  #   enable = true;
+  #   xdgOpenUsePortal = true;
+  #   config = {
+  #     common = {
+  #       default = [
+  #         "gnome"
+  #         "gtk"
+  #       ];
 
-    # Specify the backends you want to use.
-    # The order matters, the first one is the primary.
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
-    # Set the default portal for common interfaces.
-    # "wlr" is for wlroots-based compositors like niri.
-    # "gtk" is a fallback for file pickers and other things.
-    config.common.default = [
-      "wlr"
-      "gtk"
-    ];
-  };
+  #       "org.freedesktop.impl.portal.ScreenCast" = "gnome";
+  #       "org.freedesktop.impl.portal.Screenshot" = "gnome";
+  #       "org.freedesktop.impl.portal.RemoteDesktop" = "gnome";
+  #     };
+  #   };
+
+  #   # Specify the backends you want to use.
+  #   # The order matters, the first one is the primary.
+  #   extraPortals = with pkgs; [
+  #     xdg-desktop-portal-gtk
+  #     xdg-desktop-portal-gnome
+  #   ];
+  # };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -138,10 +141,9 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    wl-clipboard
-  ];
+  # environment.systemPackages = with pkgs; [
+  # wl-clipboard
+  # ];
   environment.variables = {
     EDITOR = "hx";
     VISUAL = "hx";

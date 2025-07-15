@@ -106,23 +106,20 @@
   home.packages = with pkgs; [
     helix
     git
-    jujutsu
+    jujutsu # jj-cli
     htop
     zellij # terminal multiplexer
-    # --- ESSENTIAL HYPRLAND ECOSYSTEM TOOLS ---
     alacritty
     wofi # Application launcher (or pkgs.rofi-wayland)
     waybar # Status bar (highly recommended)
     mako # Notification daemon
     swww # For setting wallpapers
     cliphist # Clipboard history manager
-    slurp # For selecting a region for screenshots
-    grim # For taking screenshots
     pavucontrol # GUI for PulseAudio/PipeWire volume control
     fd
     ripgrep
-    yazi
-    gh
+    yazi # tui file browser
+    gh # github cli
     signal-desktop
     xwayland-satellite # for running x11 apps
     nixfmt-rfc-style # nix formatter
@@ -135,7 +132,6 @@
     chromium
     claude-code
     nautilus # file browser
-    xdg-desktop-portal-gnome # gnome gui stuff
     sqlitebrowser
     gnome-characters # symbol picker
 
@@ -165,9 +161,7 @@
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
       obs-backgroundremoval
-      obs-pipewire-audio-capture
     ];
   };
 
@@ -286,12 +280,12 @@
     EDITOR = "hx";
     VISUAL = "hx";
     SUDO_EDITOR = "hx";
-    NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    SDL_VIDEODRIVER = "wayland";
-    XDG_CURRENT_DESKTOP = "Niri";
-    XDG_SESSION_TYPE = "wayland";
+    # NIXOS_OZONE_WL = "1";
+    # QT_QPA_PLATFORM = "wayland;xcb";
+    # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    # SDL_VIDEODRIVER = "wayland";
+    # XDG_CURRENT_DESKTOP = "niri";
+    # XDG_SESSION_TYPE = "wayland";
     SSH_AUTH_SOCK = "~/.1password/agent.sock";
   };
 
