@@ -73,10 +73,8 @@
       spawn-at-startup = [
         { command = [ "xwayland-satellite" ]; }
         { command = [ "swww-daemon" ]; }
-        { command = [ "udiskie -anv" ]; }
         { command = [ "mako" ]; }
         { command = [ "waybar" ]; }
-        { command = [ "/usr/bin/lxqt-policykit-agent" ]; }
         { command = [ "wl-paste --watch cliphist store" ]; }
       ];
       environment = {
@@ -150,6 +148,8 @@
     tray = "auto";
     automount = true;
   };
+
+  programs.direnv.enable = true;
 
   programs.zen-browser.enable = true;
   # programs.swww.enable = true;
