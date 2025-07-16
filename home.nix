@@ -125,7 +125,7 @@
     atac # postman-like TUI
     rsync # file sync utility
     udiskie # for mounting external drives
-    darktable # photo editing
+    # darktable # photo editing this wasn't working last time, try again in the future
     zoxide
     chromium
     claude-code
