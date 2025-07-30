@@ -154,9 +154,11 @@
   # List services that you want to enable:
   nixarr = {
     enable = true;
+    mediaDir = "/mnt/storage1/nixarr/media";
+    stateDir = "/mnt/storage1/nixarr/.state";
     vpn = {
       enable = true;
-      wgConf = "/data/wireguard.conf";
+      wgConf = "/mnt/storage1/nixarr/wireguard.conf";
     };
 
     jellyfin = {
