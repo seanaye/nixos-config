@@ -108,6 +108,7 @@
   };
 
   services.udisks2.enable = true;
+  services.tailscale.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.groups.storage = { };
@@ -141,9 +142,9 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  # wl-clipboard
-  # ];
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+  ];
   environment.variables = {
     EDITOR = "hx";
     VISUAL = "hx";

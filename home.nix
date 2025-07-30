@@ -125,13 +125,14 @@
     atac # postman-like TUI
     rsync # file sync utility
     udiskie # for mounting external drives
-    # darktable # photo editing this wasn't working last time, try again in the future
+    darktable # photo editing
     zoxide
     chromium
     claude-code
     nautilus # file browser
     sqlitebrowser
     gnome-characters # symbol picker
+    sendme # file transfer
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
