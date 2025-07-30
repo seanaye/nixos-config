@@ -84,6 +84,9 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsoup-2.74.3"
+  ];
 
   xdg.configFile."waybar/config.jsonc".source = ./waybar/config.jsonc;
   programs.waybar = {
