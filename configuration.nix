@@ -111,7 +111,7 @@
   services.tailscale.enable = true;
   services.openssh = {
     enable = true;
-    ports = [ 5432 ];
+    ports = [ 5431 ];
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
@@ -129,6 +129,7 @@
     isNormalUser = true;
     description = "Sean Aye";
     extraGroups = [
+      "docker"
       "networkmanager"
       "wheel"
       "video"
@@ -149,6 +150,7 @@
   programs.steam = {
     enable = true;
   };
+  virtualisation.docker.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

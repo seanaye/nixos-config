@@ -155,6 +155,15 @@
 
   programs.direnv.enable = true;
 
+  programs.zellij = {
+    enable = true;
+    settings = {
+      keybinds = {
+        unbind = [ "Ctrl q" ];
+      };
+    };
+  };
+
   programs.zen-browser.enable = true;
   # programs.swww.enable = true;
   programs.zoxide = {
@@ -268,11 +277,27 @@
           name = "rust";
           auto-format = true;
           formatter = {
-            command = "${pkgs.rustfmt}/bin/rustfmt --edition 2024";
+            command = "rustfmt";
+            args = [
+              "--edition"
+              "2024"
+            ];
           };
           indent = {
             tab-width = 4;
             unit = "t";
+          };
+        }
+        {
+          name = "astro";
+          auto-format = true;
+          formatter = {
+            command = "npx";
+            args = [
+              "prettier"
+              "."
+              "--write"
+            ];
           };
         }
       ];
