@@ -260,10 +260,12 @@
   networking.firewall.allowedTCPPorts = [
     8096
     5055
+    3000
   ];
   networking.firewall.allowedUDPPorts = [
     8096
     5055
+    3000
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
