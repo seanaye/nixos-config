@@ -310,8 +310,10 @@
             command = "npx";
             args = [
               "prettier"
-              "."
-              "--write"
+              "--plugin"
+              "prettier-plugin-astro"
+              "--parser"
+              "astro"
             ];
           };
         }
