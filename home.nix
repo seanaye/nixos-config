@@ -208,6 +208,15 @@
         source ~/.config/op/plugins.sh
       end
     '';
+    functions = {
+      s3edit = ''
+        set file (basename $argv[1])
+        set tmpfile /tmp/$file
+        aws s3 cp $argv[1] $tmpfile
+        and $EDITOR $tmpfile
+        and aws s3 cp $tmpfile $argv[1]
+      '';
+    };
   };
 
   programs.starship = {
