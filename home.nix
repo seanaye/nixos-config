@@ -137,6 +137,7 @@
     gnome-characters # symbol picker
     sendme # file transfer
     awscli2 # aws control
+    vscode-json-languageserver
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -304,6 +305,10 @@
               "--write"
             ];
           };
+        }
+        {
+          name = "json";
+          auto-format = true;
         }
       ];
     };
