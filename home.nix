@@ -136,6 +136,7 @@
     sqlitebrowser
     gnome-characters # symbol picker
     sendme # file transfer
+    awscli2 # aws control
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -201,6 +202,10 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
+      # Load 1Password CLI plugins
+      if test -f ~/.config/op/plugins.sh
+        source ~/.config/op/plugins.sh
+      end
     '';
   };
 
