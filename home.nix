@@ -136,6 +136,8 @@
     sqlitebrowser
     gnome-characters # symbol picker
     sendme # file transfer
+    desktop-file-utils # for managing .desktop files
+    flyctl # fly.io cli
     awscli2 # aws control
     vscode-json-languageserver
 
