@@ -34,8 +34,7 @@
         # Replace "nixos" with your actual desired hostname if it's different
         # This "nixos" must match the `networking.hostName` in your configuration.nix
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux"; # Or your system's architecture
-          specialArgs = { inherit inputs; }; # Pass inputs to your modules
+          system = "x86_64-linux";
           modules = [
             # Your main configuration file
             ./configuration.nix
@@ -55,6 +54,7 @@
               home-manager.users.sean = import ./home.nix;
             }
           ];
+          specialArgs = { inherit inputs; };
         };
       };
     };
