@@ -103,6 +103,15 @@
     '';
   };
 
+  programs.awscli2 = {
+    enable = true;
+    settings = {
+      "default" = {
+        region = "us-east-2";
+      };
+    };
+  };
+
   # All your user-specific packages
   home.packages = with pkgs; [
     helix
@@ -138,7 +147,6 @@
     sendme # file transfer
     desktop-file-utils # for managing .desktop files
     flyctl # fly.io cli
-    awscli2 # aws control
     vscode-json-languageserver
 
     # --- FONTS ARE IMPORTANT ---
