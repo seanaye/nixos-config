@@ -33,11 +33,11 @@
       nixosConfigurations = {
         # Replace "nixos" with your actual desired hostname if it's different
         # This "nixos" must match the `networking.hostName` in your configuration.nix
-        nixos = nixpkgs.lib.nixosSystem {
+        mira = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             # Your main configuration file
-            ./configuration.nix
+            ./hosts/mira/configuration.nix
             catppuccin.nixosModules.catppuccin
 
             ({
@@ -60,7 +60,7 @@
           system = "x86_64-linux";
           modules = [
             # Your main configuration file
-            ./configuration.nix
+            ./hosts/framework16/configuration.nix
             catppuccin.nixosModules.catppuccin
 
             ({

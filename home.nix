@@ -69,6 +69,9 @@
         "DP-1" = {
           scale = 2.0;
         };
+        "DP-7" = {
+          scale = 2.0;
+        };
       };
       spawn-at-startup = [
         { command = [ "xwayland-satellite" ]; }
@@ -82,6 +85,9 @@
       };
     };
   };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
