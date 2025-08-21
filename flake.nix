@@ -56,6 +56,26 @@
           ];
           specialArgs = { inherit inputs; };
         };
+        framework16 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            # Your main configuration file
+            ./configuration.nix
+            catppuccin.nixosModules.catppuccin
+
+            ({
+              nixpkgs.overlays = [ niri.overlays.niri ];
+            })
+
+            # Home Manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.sean = import ./home.nix;
+            }
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
     };
 }
