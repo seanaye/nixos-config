@@ -64,6 +64,16 @@
         "Mod+2".action = {
           set-column-width = "50%";
         };
+        "XF86MonBrightnessDown".action.spawn = [
+          "brightnessctl"
+          "set"
+          "5%-"
+        ];
+        "XF86MonBrightnessUp".action.spawn = [
+          "brightnessctl"
+          "set"
+          "+5%"
+        ];
       };
       outputs = {
         "DP-1" = {
@@ -131,6 +141,7 @@
     nixfmt-rfc-style # nix formatter
     nil # nix language server
     atac # postman-like TUI
+    trippy # network analyzer
     rsync # file sync utility
     udiskie # for mounting external drives
     darktable # photo editing
