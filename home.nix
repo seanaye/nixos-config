@@ -118,7 +118,7 @@
     '';
   };
 
-  programs.awscli2 = {
+  programs.awscli = {
     enable = true;
     settings = {
       "default" = {
