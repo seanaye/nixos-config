@@ -10,14 +10,14 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-   
+
+  services.fwupd.enable = true;
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable networking
   networking.networkmanager.enable = true;
 
-  
   # Set your time zone.
   # time.timeZone = "America/New_York";
   time.timeZone = "America/Toronto";
@@ -37,7 +37,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-    programs.niri = {
+  programs.niri = {
     enable = true;
     package = pkgs.niri;
   };
@@ -70,7 +70,6 @@
     #media-session.enable = true;
   };
 
-  
   services.udisks2.enable = true;
   services.tailscale.enable = true;
 
@@ -91,7 +90,6 @@
     shell = pkgs.fish;
   };
 
-  
   programs.fish.enable = true;
   programs._1password.enable = true;
   programs._1password-gui = {

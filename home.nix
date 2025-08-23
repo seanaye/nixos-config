@@ -32,6 +32,7 @@
       };
       gestures = {
         hot-corners = {
+          enable = false;
         };
       };
       binds = {
@@ -187,6 +188,7 @@
     desktop-file-utils # for managing .desktop files
     flyctl # fly.io cli
     vscode-json-languageserver
+    gnome-network-displays
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
