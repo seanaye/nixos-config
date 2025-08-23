@@ -13,6 +13,17 @@
   programs.niri = {
     enable = true;
     settings = {
+      window-rules = [
+        {
+          geometry-corner-radius = {
+            top-left = 12.0;
+            top-right = 12.0;
+            bottom-left = 12.0;
+            bottom-right = 12.0;
+          };
+          clip-to-geometry = true;
+        }
+      ];
       layout = {
         struts = {
           top = 0;
@@ -43,6 +54,18 @@
         };
         "Mod+l".action = {
           focus-column-right = { };
+        };
+        "Mod+Shift+h".action = {
+          move-column-left = { };
+        };
+        "Mod+Shift+j".action = {
+          move-window-down-or-to-workspace-down = { };
+        };
+        "Mod+Shift+k".action = {
+          move-window-up-or-to-workspace-up = { };
+        };
+        "Mod+Shift+l".action = {
+          move-column-right = { };
         };
         "Mod+p".action = {
           show-hotkey-overlay = { };
@@ -351,17 +374,18 @@
     };
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-hot-corners = false;
+    };
+  };
+
   # Session variables
   home.sessionVariables = {
     EDITOR = "hx";
     VISUAL = "hx";
     SUDO_EDITOR = "hx";
-    # NIXOS_OZONE_WL = "1";
-    # QT_QPA_PLATFORM = "wayland;xcb";
-    # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    # SDL_VIDEODRIVER = "wayland";
-    # XDG_CURRENT_DESKTOP = "niri";
-    # XDG_SESSION_TYPE = "wayland";
     SSH_AUTH_SOCK = "~/.1password/agent.sock";
   };
 
