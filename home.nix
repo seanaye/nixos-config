@@ -68,6 +68,12 @@
         "Mod+Shift+l".action = {
           move-column-right = { };
         };
+        "Mod+Down".action = {
+          move-workspace-down = { };
+        };
+        "Mod+Up".action = {
+          move-workspace-up = { };
+        };
         "Mod+p".action = {
           show-hotkey-overlay = { };
         };
