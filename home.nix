@@ -183,7 +183,7 @@
     trippy # network analyzer
     rsync # file sync utility
     udiskie # for mounting external drives
-    darktable # photo editing
+    # darktable # photo editing
     zoxide
     chromium
     claude-code
@@ -195,6 +195,7 @@
     flyctl # fly.io cli
     vscode-json-languageserver
     gnome-network-displays
+    doppler # secret management
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -219,6 +220,9 @@
     settings = {
       keybinds = {
         unbind = [ "Ctrl q" ];
+      };
+      ui = {
+        pane_frames = false;
       };
     };
   };
@@ -344,6 +348,10 @@
           formatter = {
             command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
           };
+        }
+        {
+          name = "kotlin";
+          auto-format = true;
         }
         {
           name = "rust";

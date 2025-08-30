@@ -10,16 +10,12 @@
     ../common/common.nix
   ];
 
-
-
-
   networking.hostName = "mira"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
 
   services.openssh = {
     enable = true;
@@ -32,9 +28,8 @@
     };
   };
 
-
   users.users.sean.openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCIqgZ7kedxo+mOW7YG73Vp3zel3h180y3GKvHtRsXfGlpIIvRDy7pgCBQ4AGXYD4y78URQmFohYSAPqCPOPaWcU2un3XG9KvCzEsHmsbskPonitUmCiKvrKkb6oW4jCBtd7AEtBn+AiajAQFtPZ7NN2Df3AmTypvR6Irg7R+nxnfc9NTIHmGvxSDyWcbb4pguL20sctUSqGL6xGh8q/bqhdOThSimM+z9bEUNxK/5rPhwkNniMrp4pJcUrUiAh5/4DiRFG6KT+oeg+/myoz/Z1sPvAs7u/8JDQI4RshRD8Hu0oTkRBN6Hxj478q2SXbeBUZlD6IdjP3RhGpmSecoDdtWqKbpuV3eVRtQtba3KL86GBeV/bugaOdJ1Aud+1SOFJreAAuvxzMMKT+cdQZk6oOPP148DA/No+mDm/2S43lcdCXh79wA6YRAmKQ8jmZxTCtPutrvuZK1rguvvUlEoG/vhdNHh7eDa4Td07V6bjCRPUl8qk/e4M0E3pwsTlZc="
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCIqgZ7kedxo+mOW7YG73Vp3zel3h180y3GKvHtRsXfGlpIIvRDy7pgCBQ4AGXYD4y78URQmFohYSAPqCPOPaWcU2un3XG9KvCzEsHmsbskPonitUmCiKvrKkb6oW4jCBtd7AEtBn+AiajAQFtPZ7NN2Df3AmTypvR6Irg7R+nxnfc9NTIHmGvxSDyWcbb4pguL20sctUSqGL6xGh8q/bqhdOThSimM+z9bEUNxK/5rPhwkNniMrp4pJcUrUiAh5/4DiRFG6KT+oeg+/myoz/Z1sPvAs7u/8JDQI4RshRD8Hu0oTkRBN6Hxj478q2SXbeBUZlD6IdjP3RhGpmSecoDdtWqKbpuV3eVRtQtba3KL86GBeV/bugaOdJ1Aud+1SOFJreAAuvxzMMKT+cdQZk6oOPP148DA/No+mDm/2S43lcdCXh79wA6YRAmKQ8jmZxTCtPutrvuZK1rguvvUlEoG/vhdNHh7eDa4Td07V6bjCRPUl8qk/e4M0E3pwsTlZc="
   ];
 
   programs.steam = {

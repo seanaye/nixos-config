@@ -5,14 +5,14 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../common/common.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../common/common.nix
+  ];
 
-
-  boot.initrd.luks.devices."luks-ee306bda-c450-4a56-b4fe-537899e38e0d".device = "/dev/disk/by-uuid/ee306bda-c450-4a56-b4fe-537899e38e0d";
+  boot.initrd.luks.devices."luks-ee306bda-c450-4a56-b4fe-537899e38e0d".device =
+    "/dev/disk/by-uuid/ee306bda-c450-4a56-b4fe-537899e38e0d";
   networking.hostName = "framework16"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -20,10 +20,9 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
