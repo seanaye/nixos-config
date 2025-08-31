@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 
@@ -130,9 +131,14 @@
       "esphome"
       "met"
       "radio_browser"
+      "homekit"
+      "homekit_controller"
+      "isal"
     ];
     config = {
+      logger.default = "debug";
       default_config = { };
+      zeroconf = { };
     };
   };
 
@@ -144,8 +150,7 @@
     8096 # jellyfin
     5055 # jellyseer
     3000 # vite dev port
-    8123 # home assistant
-
+    config.services.home-assistant.config.http.server_port
   ];
   networking.firewall.allowedUDPPorts = [
   ];
