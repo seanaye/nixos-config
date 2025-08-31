@@ -138,18 +138,15 @@
       mainBar = {
         height = 8;
         spacing = 0;
-        
+
         modules-left = [
-          "sway/workspaces"
-          "sway/mode"
-          "sway/scratchpad"
           "custom/media"
         ];
-        
+
         modules-center = [
-          "sway/window"
+          "clock"
         ];
-        
+
         modules-right = [
           "mpd"
           "pulseaudio"
@@ -162,32 +159,19 @@
           "sway/language"
           "battery"
           "battery#bat2"
-          "clock"
           "custom/power"
         ];
-        
+
         "keyboard-state" = {
           numlock = true;
           capslock = true;
           format = "{name} {icon}";
           format-icons = {
-            locked = " ";
-            unlocked = " ";
+            locked = "  ";
+            unlocked = " ";
           };
         };
-        
-        "sway/mode" = {
-          format = "<span style=\"italic\">{}</span>";
-        };
-        
-        "sway/scratchpad" = {
-          format = "{icon} {count}";
-          show-empty = false;
-          format-icons = [ "" "" ];
-          tooltip = true;
-          tooltip-format = "{app}: {title}";
-        };
-        
+
         mpd = {
           format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
           format-disconnected = "Disconnected ";
@@ -195,73 +179,77 @@
           unknown-tag = "N/A";
           interval = 5;
           consume-icons = {
-            on = " ";
+            on = " ";
           };
           random-icons = {
-            off = "<span color=\"#f53c3c\"></span> ";
-            on = " ";
+            off = "<span color=\"#f53c3c\"></span> ";
+            on = " ";
           };
           repeat-icons = {
-            on = " ";
+            on = " ";
           };
           single-icons = {
-            on = "1 ";
+            on = "1 ";
           };
           state-icons = {
-            paused = "";
-            playing = "";
+            paused = "";
+            playing = "";
           };
           tooltip-format = "MPD (connected)";
           tooltip-format-disconnected = "MPD (disconnected)";
         };
-        
+
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
-            activated = "";
-            deactivated = "";
+            activated = " ";
+            deactivated = " ";
           };
         };
-        
+
         tray = {
           spacing = 10;
         };
-        
+
         clock = {
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format-alt = "{:%Y-%m-%d}";
         };
-        
+
         cpu = {
-          format = "{usage}%  ";
+          format = "{usage}%  ";
           tooltip = false;
         };
-        
+
         memory = {
-          format = "{}%  ";
+          format = "{}%  ";
         };
-        
+
         temperature = {
           critical-threshold = 80;
           format = "{temperatureC}°C {icon}";
-          format-icons = [ "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
         };
-        
+
         backlight = {
           format = "{percent}% {icon}";
           format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
           ];
         };
-        
+
         battery = {
           states = {
             warning = 30;
@@ -269,68 +257,78 @@
           };
           format = "{capacity}% {icon}";
           format-full = "{capacity}% {icon}";
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
+          format-charging = "{capacity}% ";
+          format-plugged = "{capacity}% ";
           format-alt = "{time} {icon}";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
-        
+
         "battery#bat2" = {
           bat = "BAT2";
         };
-        
+
         "power-profiles-daemon" = {
           format = "{icon}";
           tooltip-format = "Power profile: {profile}\nDriver: {driver}";
           tooltip = true;
           format-icons = {
-            default = "";
-            performance = "";
-            balanced = " ";
-            power-saver = " ";
+            default = "";
+            performance = "";
+            balanced = " ";
+            power-saver = " ";
           };
         };
-        
+
         network = {
-          format-wifi = "{essid} ({signalStrength}%)  ";
-          format-ethernet = "{ipaddr}/{cidr} ";
-          tooltip-format = "{ifname} via {gwaddr} ";
-          format-linked = "{ifname} (No IP) ";
+          format-wifi = "{essid} ({signalStrength}%)  ";
+          format-ethernet = "{ipaddr}/{cidr} ";
+          tooltip-format = "{ifname} via {gwaddr} ";
+          format-linked = "{ifname} (No IP) ";
           format-disconnected = "Disconnected ⚠";
           format-alt = "{ifname}: {ipaddr}/{cidr}";
         };
-        
+
         pulseaudio = {
           format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{volume}% ";
-          format-source-muted = " ";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = "{volume}% ";
+          format-source-muted = " ";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = [ "" " " "  " ];
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [
+              ""
+              " "
+              "  "
+            ];
           };
           on-click = "pavucontrol";
         };
-        
+
         "custom/media" = {
           format = "{icon} {text}";
           return-type = "json";
           max-length = 40;
           format-icons = {
-            spotify = " ";
+            spotify = " ";
             default = "🎜 ";
           };
           escape = true;
           exec = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null";
         };
-        
+
         "custom/power" = {
           format = "⏻ ";
           tooltip = false;
@@ -345,7 +343,7 @@
         };
       };
     };
-    # style = builtins.readFile ./waybar/style.css;
+    style = builtins.readFile ./waybar/style.css;
   };
 
   programs.ssh = {
