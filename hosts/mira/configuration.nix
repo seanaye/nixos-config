@@ -18,6 +18,13 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # this is like a network devices discovery thing
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   services.openssh = {
     enable = true;
     ports = [ 5431 ];
@@ -134,6 +141,7 @@
       "homekit"
       "homekit_controller"
       "isal"
+      "tasmota"
     ];
     config = {
       logger.default = "debug";
@@ -154,6 +162,7 @@
   ];
   networking.firewall.allowedUDPPorts = [
   ];
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
