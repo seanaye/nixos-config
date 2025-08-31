@@ -51,7 +51,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.sean = import ./home.nix;
+              home-manager.users.sean = import ./hosts/mira/home.nix;
             }
           ];
           specialArgs = { inherit inputs; };
@@ -71,7 +71,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.sean = import ./home.nix;
+              home-manager.users.sean = import ./hosts/framework16/home.nix;
             }
           ];
           specialArgs = { inherit inputs; };

@@ -1,4 +1,3 @@
-# This is the configuration for your user 'sean'
 { pkgs, inputs, ... }:
 
 {
