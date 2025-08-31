@@ -107,6 +107,9 @@
         "DP-7" = {
           scale = 2.0;
         };
+        "DP-5" = {
+          scale = 2.0;
+        };
       };
       spawn-at-startup = [
         { command = [ "xwayland-satellite" ]; }
@@ -547,6 +550,12 @@
       };
     };
     languages = {
+      language-server.rust-analyzer = {
+        config = {
+          checkOnSave = { command = "clippy"; };
+          cargo = { allFeatures = true; };
+        };
+      };
       language = [
         {
           name = "nix";
