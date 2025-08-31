@@ -69,6 +69,22 @@
   color: @red;
 }
 
+#network {
+  color: @green;
+}
+
+#cpu {
+  color: @peach;
+}
+
+#memory {
+  color: @mauve;
+}
+
+#temperature {
+  color: @red;
+}
+
 #backlight {
   color: @yellow;
 }

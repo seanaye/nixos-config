@@ -35,13 +35,9 @@
         };
       };
       binds = {
-        "Mod+d".action.spawn = [
-          "wofi"
-          "--show"
-          "drun"
-          "--prompt"
-          "Search..."
-        ];
+        "Mod+d".action.spawn = "fuzzel";
+        "Mod+e".action.spawn = "bemoji";
+        "Mod+n".action.spawn = "networkmanager_dmenu";
         "Mod+a".action.spawn = "alacritty";
         "Mod+h".action = {
           focus-column-left = { };
@@ -212,8 +208,9 @@
         };
 
         clock = {
+          format = "{:%d-%m-%Y %H:%M}";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format-alt = "{:%Y-%m-%d}";
+          format-alt = "{:%Y-%m-%d %H:%M:%S}";
         };
 
         cpu = {
@@ -371,7 +368,9 @@
     htop
     zellij # terminal multiplexer
     alacritty
-    wofi # Application launcher (or pkgs.rofi-wayland)
+    fuzzel # Application launcher
+    bemoji # emoji picker
+    networkmanager_dmenu # network picker for fuzzel
     waybar # Status bar (highly recommended)
     mako # Notification daemon
     swww # For setting wallpapers
@@ -427,8 +426,9 @@
       keybinds = {
         unbind = [ "Ctrl q" ];
       };
+      pane_frames = false;
       ui = {
-        pane_frames = false;
+        pane_frames.hide_session_name = true;
       };
     };
   };
