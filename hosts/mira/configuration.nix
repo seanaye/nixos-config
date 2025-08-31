@@ -123,19 +123,31 @@
     };
   };
 
+  # Home Assistant service
+  services.home-assistant = {
+    enable = true;
+    extraComponents = [
+      "esphome"
+      "met"
+      "radio_browser"
+    ];
+    config = {
+      default_config = { };
+    };
+  };
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
-    8096
-    5055
-    3000
+    8096 # jellyfin
+    5055 # jellyseer
+    3000 # vite dev port
+    8123 # home assistant
+
   ];
   networking.firewall.allowedUDPPorts = [
-    8096
-    5055
-    3000
   ];
 
   # This value determines the NixOS release from which the default
