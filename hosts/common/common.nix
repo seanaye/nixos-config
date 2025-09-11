@@ -6,6 +6,7 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.download-buffer-size = 268435456;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

@@ -21,6 +21,7 @@
             bottom-right = 12.0;
           };
           clip-to-geometry = true;
+          draw-border-with-background = false;
         }
       ];
       layout = {
@@ -421,6 +422,13 @@
     automount = true;
   };
 
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
+  };
+
+  programs.fuzzel.enable = true;
+
   programs.direnv.enable = true;
 
   programs.zellij = {
@@ -494,16 +502,12 @@
     enableFishIntegration = true;
   };
 
-  catppuccin = {
-    enable = true;
-    flavor = "frappe";
-  };
-
   programs.alacritty = {
     enable = true;
     settings = {
       window = {
         decorations = "none";
+        opacity = 0.9;
       };
     };
 
@@ -552,8 +556,13 @@
     languages = {
       language-server.rust-analyzer = {
         config = {
-          checkOnSave = { command = "clippy"; };
-          cargo = { allFeatures = true; };
+          check = {
+            command = "clippy";
+          };
+          checkOnSave = true;
+          cargo = {
+            allFeatures = true;
+          };
         };
       };
       language = [
@@ -600,6 +609,25 @@
         {
           name = "json";
           auto-format = true;
+        }
+        {
+          name = "just";
+          auto-format = true;
+          formatter = {
+            command = "just";
+            args = [
+              "--justfile"
+              "/dev/stdin"
+              "--dump"
+            ];
+          };
+        }
+        {
+          name = "toml";
+          auto-format = true;
+          formatter = {
+            command = "taplo";
+          };
         }
       ];
     };
