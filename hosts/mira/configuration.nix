@@ -131,6 +131,18 @@
     };
   };
 
+  # MQTT broker for Home Assistant (Tasmota devices)
+  services.mosquitto = {
+    enable = true;
+    listeners = [
+      {
+        acl = [ "pattern readwrite #" ];
+        omitPasswordAuth = true;
+        settings.allow_anonymous = true;
+      }
+    ];
+  };
+
   # Home Assistant service
   services.home-assistant = {
     enable = true;
@@ -141,12 +153,18 @@
       "homekit"
       "homekit_controller"
       "isal"
+      "mqtt"
       "tasmota"
+      "wiz"
     ];
     config = {
-      logger.default = "debug";
+      homeassistant = {
+        time_zone = "America/Toronto";
+      };
       default_config = { };
       zeroconf = { };
+      # MQTT configuration - broker must be set up via UI
+      mqtt = { };
     };
   };
 
@@ -158,6 +176,7 @@
     8096 # jellyfin
     5055 # jellyseer
     3000 # vite dev port
+    1883 # MQTT for Tasmota devices
     config.services.home-assistant.config.http.server_port
   ];
   networking.firewall.allowedUDPPorts = [
