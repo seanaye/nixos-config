@@ -105,6 +105,9 @@
         "DP-1" = {
           scale = 2.0;
         };
+        "DP-2" = {
+          scale = 2.0;
+        };
         "DP-7" = {
           scale = 2.0;
         };
@@ -405,6 +408,7 @@
     vscode-json-languageserver
     gnome-network-displays
     doppler # secret management
+    rainfrog # db tui
 
     # --- FONTS ARE IMPORTANT ---
     noto-fonts
@@ -627,6 +631,10 @@
           auto-format = true;
           formatter = {
             command = "taplo";
+            args = [
+              "format"
+              "-"
+            ];
           };
         }
       ];
