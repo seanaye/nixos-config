@@ -25,6 +25,8 @@
     openFirewall = true;
   };
 
+  services.copyparty.enable = true;
+
   services.openssh = {
     enable = true;
     ports = [ 5431 ];

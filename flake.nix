@@ -17,6 +17,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    copyparty.url = "github:9001/copyparty";
   };
 
   outputs =
@@ -27,6 +28,7 @@
       catppuccin,
       niri,
       nixarr,
+      copyparty,
       ...
     }@inputs:
     {
@@ -40,8 +42,13 @@
             ./hosts/mira/configuration.nix
             catppuccin.nixosModules.catppuccin
 
+            copyparty.nixosModules.default
+
             ({
-              nixpkgs.overlays = [ niri.overlays.niri ];
+              nixpkgs.overlays = [
+                niri.overlays.niri
+                copyparty.overlays.default
+              ];
             })
 
             # nixarr module
